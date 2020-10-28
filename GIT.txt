@@ -1,0 +1,53 @@
+
+git diff - areas of the changes
+git log --oneline - log oneline showing short commit hash
+
+1. git restore
+      - restore the original file from the changed one
+      - restore the deleted file to original file
+
+  git restore --source #commit_hash filename
+        - restore the file to a particular #commit_hash
+
+2. git restore -p - > Patch level
+
+3. git commit --amend -m "Typos are very embarrassing"
+
+4. git revert #commit_hash - Revert the changes
+
+5. git reset --hard #commit_hash - remove the commit_hash and disappear the changes
+
+6. git reflog
+      journeys the HEAD pointer of the git
+      Journal of the Git
+
+7. git branch "new_branch_name" #commit_hash
+        used to get a deleted commit
+        for eg: git branch develop b1c249b
+8. Moving a commit to a new branch
+    git branch "new_branch_name"
+    git reset HEAD~1 --hard
+9. Moving commit to an existing branch
+  Note the #commit_hash
+    git checkout feature/new_branch_name
+    git cherry-pick #commit_hash
+    git checkout master
+    git reset --hard HEAD~1
+
+10. Interactive rebase
+    - Helps in cleaning internal local history
+
+    git rebase -i HEAD~#no_of_commits behind
+
+    git rebase -i HEAD~3
+        reword - to amend the remarks
+    git rebase -i HEAD~2
+        drop is used to delete a commit officially
+    git rebase -i HEAD~4
+        Squashing a number of commits using
+          squash - s - combine commits
+          fixup - f - combine commits without history
+11. git add .
+      git commit --fixup #commit_hash
+
+      git rebase -i HEAD~no_of_commits --autosquash
